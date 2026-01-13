@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Links Elevus</title>
+
+  <link rel="stylesheet" href="../style.css"> <!-- mantém a fonte e estilos gerais -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #0B1E3D; /* azul escuro do Elevus */
+      font-family: 'Inter', sans-serif;
+      color: #fff; /* textos claros pra contrastar */
+    }
+
+    .container {
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      color: #fff;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: #ddd;
+    }
+
+    .link-btn {
+      display: block;
+      background: linear-gradient(145deg, #E1C16E, #D4AF37); /* dourado premium */
+      color: #000;
+      font-weight: 700;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      margin: 10px 0;
+    }
+
+    .link-btn:hover {
+      background: linear-gradient(145deg, #fffcfc80, #ffffff);
+      transform: scale(1.05);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img src="../img/logo.png" alt="Logo Elevus" class="logo">
+    <h1>Elevus</h1>
+    <p>Todos os nossos links 👇</p>
+
+    <a href="../index.html" class="link-btn">Site Principal</a>
+    <a href="https://wa.me/5573999854625" class="link-btn">WhatsApp</a>
+    <a href="https://www.instagram.com/elevusedificacoes" class="link-btn">Instagram</a>
+
+  </div>
+</body>
+</html>
