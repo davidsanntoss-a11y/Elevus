@@ -5,38 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Elevus</title>
 
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 
+  <!-- FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* Botão dourado premium */
-    .btn-dourado {
-      display: inline-block;
-      background: linear-gradient(145deg, #E1C16E, #D4AF37);
-      color: #000;
-      font-weight: 700;
-      padding: 12px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    }
-
-    .btn-dourado:hover {
-      background: linear-gradient(145deg, #FFD700, #FFC300);
-      transform: scale(1.05);
-      box-shadow: 0 6px 10px rgba(0,0,0,0.25);
-    }
-  </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
+  <!-- HERO -->
   <header class="hero">
     <img src="img/logo.png" alt="Logo Elevus" class="logo">
     <h1>ELEVUS</h1>
@@ -44,12 +24,12 @@
     <button onclick="chamar()">Falar no WhatsApp</button>
   </header>
 
-  <!-- MENU -->
+  <!-- MENU (3 PONTINHOS) -->
   <div class="menu-container">
-    <button class="menu-btn" onclick="toggleMenu()">⋮</button>
+    <button class="menu-btn" id="menuBtn">⋮</button>
 
     <div class="menu-dropdown" id="menu">
-      <a href="problema.html" class="btn-dourado">Com Problemas?</a>
+      <a href="problema.html">Com Problemas?</a>
     </div>
   </div>
 
@@ -104,7 +84,7 @@
       <a href="portas-janelas.html" class="card-link">
         <div class="service-card">
           <img src="img/icons/portas-janelas.svg" alt="Portas e Janelas">
-          <p>PORTAS E JANELAS</p>
+          <p>RESIDENCIAL</p>
         </div>
       </a>
 
@@ -114,33 +94,39 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-
     <div class="social">
-      <a href="https://www.instagram.com/elevusedificacoes"
-         target="_blank"
-         rel="noopener noreferrer">
-        <img src="img/instagram.svg" alt="Instagram Elevus Edificações">
+      <a href="https://www.instagram.com/elevusedificacoes" target="_blank" rel="noopener noreferrer">
+        <img src="img/instagram.svg" alt="Instagram Elevus">
         <span>@elevusedificacoes</span>
       </a>
     </div>
 
     <div class="patrocinador">
-      <p>Patrocínio</p>
-      <strong>NOME DO PATROCINADOR</strong>
+      <strong>Thiago O. Gomes</strong>
     </div>
-
   </footer>
 
   <!-- SCRIPTS -->
   <script>
+    // WhatsApp
     function chamar() {
       window.open("https://wa.me/5573999854625", "_blank");
     }
 
-    function toggleMenu() {
-      const menu = document.getElementById("menu");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
-    }
+    // MENU SUAVE (SEM DISPLAY NONE)
+    const menuBtn = document.getElementById("menuBtn");
+    const menu = document.getElementById("menu");
+
+    menuBtn.addEventListener("click", () => {
+      menu.classList.toggle("active");
+    });
+
+    // fecha menu clicando fora
+    document.addEventListener("click", (e) => {
+      if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
+        menu.classList.remove("active");
+      }
+    });
   </script>
 
 </body>
