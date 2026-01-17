@@ -464,3 +464,39 @@ textarea {
   box-shadow: 0 20px 40px rgba(30, 58, 138, 0.6);
   filter: brightness(1.05);
 }
+/* ================= CORREÇÃO DE ESPAÇAMENTO ENTRE ABAS ================= */
+
+/* garante espaço entre qualquer seção */
+section,
+.container,
+.card,
+.carousel,
+.footer {
+  margin-bottom: 40px;
+}
+
+/* evita cards grudarem um no outro */
+.card {
+  position: relative;
+  z-index: 1;
+}
+
+/* serviços nunca ficam colados */
+.servicos {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* carrossel não invade nada */
+.carousel {
+  clear: both;
+}
+
+/* mobile safety */
+@media (max-width: 768px) {
+  section,
+  .container,
+  .card {
+    margin-bottom: 32px;
+  }
+}
