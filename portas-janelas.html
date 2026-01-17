@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Obras | Elevus</title>
+  <title>Residencial | Elevus</title>
 
   <link rel="stylesheet" href="style.css">
 
@@ -14,49 +14,64 @@
 
 <body>
 
-  <!-- HEADER -->
-  <header class="hero" style="padding: 60px 20px;">
-    <h1>RESIDENCIAL</h1>
-    <p>Execução completa com padrão Elevus.</p>
+  <!-- HERO -->
+  <header class="hero">
+    <h1> SERVIÇOS
+    <p>Conte o que você precisa. A gente executa.</p>
     <button onclick="voltar()">Voltar</button>
   </header>
 
   <main class="container">
 
-    <section class="card">
-      <h2>O que fazemos</h2>
+    <!-- DESCRIÇÃO -->
+    <section class="card reveal">
+      <h2>Como funciona</h2>
       <p>
-        Executamos obras do zero ao acabamento final, com planejamento,
-        controle de qualidade e respeito total ao prazo.
-        Cada detalhe importa — do alicerce ao último rejunte.
+        Informe o serviço desejado e uma breve descrição.
+        Nossa equipe retorna com a melhor solução.
       </p>
     </section>
 
-    <section class="card">
-      <h2>Diferenciais</h2>
-      <ul style="padding-left: 18px; line-height: 1.8;">
-        <li>Gestão de obra completa</li>
-        <li>Equipe especializada</li>
-        <li>Alto padrão de acabamento</li>
-        <li>Transparência total com o cliente</li>
-      </ul>
-    </section>
+    <!-- FORM MINIMAL -->
+    <section class="card reveal form-card">
+      <h2>Solicitar orçamento</h2>
 
-    <!--  GALERIA -->
-    <section class="carousel">
-      <h2>Projetos realizados</h2>
+      <form class="form-minimal" onsubmit="enviarPedido(event)">
 
-      <div class="carousel-container">
-        <button class="carousel-btn left" onclick="prevSlide()">❮</button>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nome</label>
+            <input type="text" id="nome" placeholder="Seu nome" required>
+          </div>
 
-        <div class="carousel-track">
-          <img src="img/galeria/obra1.png" class="slide active">
-<img src="img/galeria/obra2.png" class="slide">
-<img src="img/galeria/obra3.png" class="slide">
+          <div class="form-group">
+            <label>Serviço</label>
+            <select id="servico" required>
+              <option value="">Selecionar</option>
+              <option>Construção do zero</option>
+              <option>Reforma</option>
+              <option>Pisos e revestimentos</option>
+              <option>Acabamento fino</option>
+              <option>Outro</option>
+            </select>
+          </div>
         </div>
 
-        <button class="carousel-btn right" onclick="nextSlide()">❯</button>
-      </div>
+        <div class="form-group">
+          <label>Descrição</label>
+          <textarea
+            id="mensagem"
+            rows="3"
+            placeholder="Explique rapidamente o que você precisa"
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-enviar">
+          Enviar pedido
+        </button>
+
+      </form>
     </section>
 
   </main>
@@ -66,9 +81,9 @@
   </footer>
 
   <!-- BOTÃO FLUTUANTE -->
-  <a 
-    href="https://wa.me/5573999854625?text=Olá!%20Quero%20fazer%20um%20pedido."
-    target="_blank"
+  <a
+    href="#"
+    onclick="document.querySelector('.form-card').scrollIntoView({behavior:'smooth'})"
     class="pedido-btn"
   >
     Fazer pedido
@@ -80,23 +95,41 @@
       window.location.href = "index.html";
     }
 
-    let currentSlide = 0;
-    const slides = document.querySelectorAll(".slide");
+    function enviarPedido(event) {
+      event.preventDefault();
 
-    function showSlide(index) {
-      slides.forEach(slide => slide.classList.remove("active"));
-      slides[index].classList.add("active");
+      const nome= document.getElementById("nome").value;
+      const servico = document.getElementById("servico").value;
+      const mensagem = document.getElementById("mensagem").value;
+
+      const texto =
+`Olá, equipe Elevus.
+
+Meu nome é ${nome}.
+Serviço desejado: ${servico}.
+
+Descrição:
+${mensagem}
+
+Aguardo retorno.
+`;
+
+      window.location.href =
+        `mailto:contato@elevusedificacoes.com` +
+        `?subject=${encodeURIComponent("Solicitação de orçamento")}` +
+        `&body=${encodeURIComponent(texto)}`;
     }
 
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      showSlide(currentSlide);
-    }
+    // SCROLL REVEAL
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    });
 
-    function prevSlide() {
-      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      showSlide(currentSlide);
-    }
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
   </script>
 
 </body>
