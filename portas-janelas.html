@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Residencial | Elevus</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <h1> SERVIÇOS
+    <p>Conte o que você precisa. A gente executa.</p>
+    <button onclick="voltar()">Voltar</button>
+  </header>
+
+  <main class="container">
+
+    <!-- DESCRIÇÃO -->
+    <section class="card reveal">
+      <h2>Como funciona</h2>
+      <p>
+        Informe o serviço desejado e uma breve descrição.
+        Nossa equipe retorna com a melhor solução.
+      </p>
+    </section>
+
+    <!-- FORM MINIMAL -->
+    <section class="card reveal form-card">
+      <h2>Solicitar orçamento</h2>
+
+      <form class="form-minimal" onsubmit="enviarPedido(event)">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nome</label>
+            <input type="text" id="nome" placeholder="Seu nome" required>
+          </div>
+
+          <div class="form-group">
+            <label>Serviço</label>
+            <select id="servico" required>
+              <option value="">Selecionar</option>
+              <option>Construção do zero</option>
+              <option>Reforma</option>
+              <option>Pisos e revestimentos</option>
+              <option>Acabamento fino</option>
+              <option>Outro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Descrição</label>
+          <textarea
+            id="mensagem"
+            rows="3"
+            placeholder="Explique rapidamente o que você precisa"
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-enviar">
+          Enviar pedido
+        </button>
+
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© Elevus Edificações</p>
+  </footer>
+
+  <!-- BOTÃO FLUTUANTE -->
+  <a
+    href="#"
+    onclick="document.querySelector('.form-card').scrollIntoView({behavior:'smooth'})"
+    class="pedido-btn"
+  >
+    Fazer pedido
+  </a>
+
+  <!-- SCRIPTS -->
+  <script>
+    function voltar() {
+      window.location.href = "index.html";
+    }
+
+    function enviarPedido(event) {
+      event.preventDefault();
+
+      const nome= document.getElementById("nome").value;
+      const servico = document.getElementById("servico").value;
+      const mensagem = document.getElementById("mensagem").value;
+
+      const texto =
+`Olá, equipe Elevus.
+
+Meu nome é ${nome}.
+Serviço desejado: ${servico}.
+
+Descrição:
+${mensagem}
+
+Aguardo retorno.
+`;
+
+      window.location.href =
+        `mailto:contato@elevusedificacoes.com` +
+        `?subject=${encodeURIComponent("Solicitação de orçamento")}` +
+        `&body=${encodeURIComponent(texto)}`;
+    }
+
+    // SCROLL REVEAL
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

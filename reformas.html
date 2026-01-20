@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obras | Elevus</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="hero" style="padding: 60px 20px;">
+    <h1>REFORMAS</h1>
+    <p>Execução completa com padrão Elevus.</p>
+    <button onclick="voltar()">Voltar</button>
+  </header>
+
+  <main class="container">
+
+    <section class="card">
+      <h2>O que fazemos</h2>
+      <p>
+        Realizamos reformas COMPLETAS, cuidando de cada etapa com ORGANIZAÇÃO, padrão de qualidade e compromisso com a entrega. Do primeiro ajuste ao acabamento final, tudo é feito no detalhe.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Diferenciais</h2>
+      <ul style="padding-left: 18px; line-height: 1.8;">
+        <li>Planejamento da reforma</li>
+        <li>Acabamento bem executado</li>
+        <li>Prazo respeitado</li>
+        <li>Organização durante o serviço</li>
+      </ul>
+    </section>
+
+    <!-- 🔥 GALERIA -->
+    <section class="carousel">
+      <h2>Projetos realizados</h2>
+
+      <div class="carousel-container">
+        <button class="carousel-btn left" onclick="prevSlide()">❮</button>
+
+        <div class="carousel-track">
+          <img src="img/galeria/obra1.png" class="slide active">
+<img src="img/galeria/obra2.png" class="slide">
+<img src="img/galeria/obra3.png" class="slide">
+        </div>
+
+        <button class="carousel-btn right" onclick="nextSlide()">❯</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© Elevus Edificações</p>
+  </footer>
+
+  <!-- BOTÃO FLUTUANTE -->
+  <a 
+    href="https://wa.me/5573999854625?text=Olá!%20Quero%20fazer%20um%20pedido."
+    target="_blank"
+    class="pedido-btn"
+  >
+    Fazer pedido
+  </a>
+
+  <!-- SCRIPTS -->
+  <script>
+    function voltar() {
+      window.location.href = "index.html";
+    }
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slide");
+
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove("active"));
+      slides[index].classList.add("active");
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+  </script>
+
+</body>
+</html>

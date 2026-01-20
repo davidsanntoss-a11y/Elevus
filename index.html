@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elevus</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <img src="img/logo.png" alt="Logo Elevus" class="logo">
+    <h1>ELEVUS</h1>
+    <p>Elevando o padrão do seu revestimento.</p>
+    <button onclick="chamar()">Falar no WhatsApp</button>
+  </header>
+
+  <!-- MENU (3 PONTINHOS) -->
+  <div class="menu-container">
+    <button class="menu-btn" id="menuBtn">⋮</button>
+
+    <div class="menu-dropdown" id="menu">
+      <a href="problema.html">Com Problemas?</a>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO -->
+  <main class="container">
+
+    <!-- SOBRE -->
+    <section class="card">
+      <h2>Sobre</h2>
+      <p>
+        A <strong>ELEVUS</strong> é especializada em projetos residenciais personalizados,
+        unindo planejamento detalhado e execução precisa em cada etapa da obra.
+        Atuamos com gestão transparente, compromisso real com prazos
+        e acabamento de alto padrão. Presente em Trancoso e região,
+        elevamos o nível de cada projeto que assinamos.
+      </p>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <h2>SERVIÇOS</h2>
+
+    <div class="servicos">
+
+      <a href="obra.html" class="card-link">
+        <div class="service-card">
+          <img src="img/icons/obra.svg" alt="Serviço de Obra">
+          <p>OBRAS RESIDENCIAIS</p>
+        </div>
+      </a>
+
+      <a href="reformas.html" class="card-link">
+        <div class="service-card">
+          <img src="img/icons/reformas.svg" alt="Serviço de Reformas">
+          <p>PEQUENAS REFORMAS</p>
+        </div>
+      </a>
+
+      <a href="instalacao-manutencao.html" class="card-link">
+        <div class="service-card">
+          <img src="img/icons/manutencao.svg" alt="Instalação e Manutenção">
+          <p>REVESTIMENTO</p>
+        </div>
+      </a>
+
+      <a href="pisos.html" class="card-link">
+        <div class="service-card">
+          <img src="img/icons/pisos.svg" alt="Instalação de Pisos">
+          <p>PISOS</p>
+        </div>
+      </a>
+
+      <a href="portas-janelas.html" class="card-link">
+        <div class="service-card">
+          <img src="img/icons/portas-janelas.svg" alt="Portas e Janelas">
+          <p>OUTROS SERVIÇOS</p>
+        </div>
+      </a>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="social">
+      <a href="https://www.instagram.com/elevusedificacoes" target="_blank" rel="noopener noreferrer">
+        <img src="img/instagram.svg" alt="Instagram Elevus">
+        <span>@elevusedificacoes</span>
+      </a>
+    </div>
+
+    <div class="patrocinador">
+      <strong>Thiago O. Gomes</strong>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // WhatsApp
+    function chamar() {
+      window.open("https://wa.me/5573999854625", "_blank");
+    }
+
+    // MENU SUAVE (SEM DISPLAY NONE)
+    const menuBtn = document.getElementById("menuBtn");
+    const menu = document.getElementById("menu");
+
+    menuBtn.addEventListener("click", () => {
+      menu.classList.toggle("active");
+    });
+
+    // fecha menu clicando fora
+    document.addEventListener("click", (e) => {
+      if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
+        menu.classList.remove("active");
+      }
+    });
+  </script>
+
+</body>
+</html>
+<!-- teste git -->

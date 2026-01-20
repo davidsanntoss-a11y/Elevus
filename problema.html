@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reportar Problema - Elevus</title>
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    .card {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f8f8f8;
+      border-radius: 10px;
+    }
+
+    .card input,
+    .card textarea,
+    .card button {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Botão dourado normal e hover azul escuro */
+    .card button {
+      background: linear-gradient(145deg, #E1C16E, #D4AF37);
+      color: #000;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+
+    .card button:hover {
+      background-color: #1A1F36; /* azul escuro da página */
+      color: #fff; /* texto branco */
+      transform: scale(1.05);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="hero">
+    <img src="img/logo.png" alt="Logo Elevus" class="logo">
+    <h1>Reportar Problema</h1>
+    <p>Use o formulário abaixo para nos informar qualquer problema.</p>
+  </header>
+
+  <section class="card">
+    <form action="https://formsubmit.co/davidsanntoss@outlook.com" method="POST">
+      <input type="text" name="nome" placeholder="Seu nome" required>
+      <input type="email" name="email" placeholder="Seu email" required>
+      <textarea name="problema" placeholder="Descreva o problema" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <footer class="footer" style="text-align:center; padding:20px;">
+    <p>&copy; 2026 Elevus. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
