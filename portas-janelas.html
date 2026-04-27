@@ -3,21 +3,244 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Residencial | Elevus</title>
-
-  <link rel="stylesheet" href="style.css">
+  <title>Serviços | Elevus Edificações</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <style>
+    /* ================= RESET ================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ================= BASE ================= */
+    body {
+      background: #f5f7fb;
+      color: #1f2933;
+      animation: pageEnter 0.5s ease-out;
+    }
+
+    /* ================= HERO ================= */
+    .hero {
+      background: linear-gradient(135deg, #0b1f3b, #0f1135);
+      color: #fff;
+      text-align: center;
+      padding: 100px 20px 80px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 680px;
+      margin: 0 auto 30px;
+      opacity: 0.95;
+    }
+
+    .hero button {
+      background: #fff;
+      color: #000;
+      border: none;
+      padding: 14px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform .25s ease, opacity .25s ease;
+    }
+
+    .hero button:hover {
+      transform: translateY(-3px);
+      opacity: 0.95;
+    }
+
+    /* ================= CONTAINER ================= */
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* ================= CARD ================= */
+    .card {
+      background: linear-gradient(180deg, #ffffff, #f9fafb);
+      border-radius: 18px;
+      padding: 35px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      margin-bottom: 40px;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 45px rgba(0,0,0,.12);
+    }
+
+    .card h2 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+      color: #0b1f3b;
+    }
+
+    /* ================= FORMULÁRIO ================= */
+    .form-minimal {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-bottom: 7px;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      font-size: 1rem;
+      background: #ffffff;
+      color: #0f172a;
+      transition: all 0.25s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #1e3a8a;
+      box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.25);
+      transform: translateY(-1px);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .btn-enviar {
+      margin-top: 10px;
+      padding: 16px 34px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #0b1f3b, #1e3a8a);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1.02rem;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      width: 100%;
+      box-shadow: 0 12px 26px rgba(30, 58, 138, 0.45);
+      transition: all 0.25s ease;
+    }
+
+    .btn-enviar:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(30, 58, 138, 0.6);
+    }
+
+    .btn-enviar:disabled {
+      opacity: 0.75;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Mensagem de sucesso */
+    .success-message {
+      display: none;
+      background: #ecfdf5;
+      color: #0f766e;
+      padding: 18px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 600;
+      margin-top: 20px;
+      border: 1px solid #a7f3d0;
+    }
+
+    /* ================= BOTÃO FLUTUANTE ================= */
+    .pedido-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: linear-gradient(135deg, #d4af37, #b8962e);
+      color: #0b1c2d;
+      padding: 15px 26px;
+      border-radius: 30px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 14px 30px rgba(212,175,55,.45);
+      transition: all .3s ease;
+      animation: pulse 2s infinite;
+      z-index: 999;
+    }
+
+    .pedido-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 24px 45px rgba(212,175,55,.65);
+    }
+
+    /* ================= FOOTER ================= */
+    .footer {
+      background: #0b1c2d;
+      color: #fff;
+      padding: 35px 20px;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    /* ================= ANIMAÇÕES ================= */
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(212,175,55,.6); }
+      70%  { box-shadow: 0 0 0 18px rgba(212,175,55,0); }
+      100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); }
+    }
+
+    @keyframes pageEnter {
+      from { opacity: 0; transform: translateY(15px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+    }
+  </style>
+</head>
 <body>
 
   <!-- HERO -->
   <header class="hero">
-    <h1> SERVIÇOS
-    <p>Conte o que você precisa. A gente executa.</p>
+    <h1>Serviços</h1>
+    <p>Conte o que você precisa. A gente executa com qualidade e prazo.</p>
     <button onclick="voltar()">Voltar</button>
   </header>
 
@@ -26,70 +249,76 @@
     <!-- DESCRIÇÃO -->
     <section class="card reveal">
       <h2>Como funciona</h2>
-      <p>
-        Informe o serviço desejado e uma breve descrição.
-        Nossa equipe retorna com a melhor solução.
+      <p style="font-size: 1.05rem; line-height: 1.7;">
+        Informe o serviço desejado e uma breve descrição do seu projeto.<br>
+        Nossa equipe retorna rapidamente com a melhor solução técnica e comercial.
       </p>
     </section>
 
-    <!-- FORM MINIMAL -->
-    <section class="card reveal form-card">
-      <h2>Solicitar orçamento</h2>
+    <!-- FORMULÁRIO -->
+    <section class="card reveal">
+      <h2>Solicitar Orçamento</h2>
 
-      <form class="form-minimal" onsubmit="enviarPedido(event)">
+      <form id="formOrcamento" class="form-minimal" onsubmit="enviarPedido(event)">
 
         <div class="form-row">
           <div class="form-group">
-            <label>Nome</label>
+            <label>Nome completo</label>
             <input type="text" id="nome" placeholder="Seu nome" required>
           </div>
 
           <div class="form-group">
-            <label>Serviço</label>
+            <label>WhatsApp / Telefone</label>
+            <input type="tel" id="telefone" placeholder="(XX) XXXXX-XXXX" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Serviço desejado</label>
             <select id="servico" required>
-              <option value="">Selecionar</option>
-              <option>Construção do zero</option>
-              <option>Reforma</option>
-              <option>Pisos e revestimentos</option>
-              <option>Acabamento fino</option>
-              <option>Outro</option>
+              <option value="">Selecione...</option>
+              <option value="Construção do zero">Construção do zero</option>
+              <option value="Reforma">Reforma</option>
+              <option value="Pisos e revestimentos">Pisos e revestimentos</option>
+              <option value="Acabamento fino">Acabamento fino</option>
+              <option value="Outro">Outro</option>
             </select>
+          </div>
+
+          <div class="form-group">
+            <label>Cidade / Região</label>
+            <input type="text" id="cidade" placeholder="Ex: Porto Seguro - BA" required>
           </div>
         </div>
 
         <div class="form-group">
-          <label>Descrição</label>
-          <textarea
-            id="mensagem"
-            rows="3"
-            placeholder="Explique rapidamente o que você precisa"
-            required
-          ></textarea>
+          <label>Descrição do projeto</label>
+          <textarea id="mensagem" rows="5" placeholder="Descreva o que você precisa..." required></textarea>
         </div>
 
-        <button type="submit" class="btn-enviar">
-          Enviar pedido
+        <button type="submit" id="btnEnviar" class="btn-enviar">
+          Enviar Pedido
         </button>
 
+        <div id="successMessage" class="success-message">
+          ✅ Solicitação enviada com sucesso!<br>
+          Em breve entraremos em contato pelo WhatsApp.
+        </div>
       </form>
     </section>
 
   </main>
 
   <footer class="footer">
-    <p>© Elevus Edificações</p>
+    <p>©️ Elevus Edificações</p>
   </footer>
 
   <!-- BOTÃO FLUTUANTE -->
-  <a
-    href="#"
-    onclick="document.querySelector('.form-card').scrollIntoView({behavior:'smooth'})"
-    class="pedido-btn"
-  >
-    Fazer pedido
+  <a href="#" onclick="document.querySelector('.card:last-child').scrollIntoView({behavior:'smooth'})" class="pedido-btn">
+    Fazer Pedido
   </a>
 
-  <!-- SCRIPTS -->
   <script>
     function voltar() {
       window.location.href = "index.html";
@@ -98,38 +327,59 @@
     function enviarPedido(event) {
       event.preventDefault();
 
-      const nome= document.getElementById("nome").value;
-      const servico = document.getElementById("servico").value;
-      const mensagem = document.getElementById("mensagem").value;
+      const btn = document.getElementById("btnEnviar");
+      const success = document.getElementById("successMessage");
 
-      const texto =
-`Olá, equipe Elevus.
+      btn.disabled = true;
+      btn.textContent = "Enviando...";
 
-Meu nome é ${nome}.
-Serviço desejado: ${servico}.
+      const nome     = document.getElementById("nome").value.trim();
+      const telefone = document.getElementById("telefone").value.trim();
+      const servico  = document.getElementById("servico").value;
+      const cidade   = document.getElementById("cidade").value.trim();
+      const mensagem = document.getElementById("mensagem").value.trim();
 
-Descrição:
-${mensagem}
+      const texto = `Olá, equipe Elevus!\n\n` +
+                    `Meu nome é ${nome}.\n` +
+                    `WhatsApp: ${telefone}\n` +
+                    `Cidade: ${cidade}\n` +
+                    `Serviço: ${servico}\n\n` +
+                    `Descrição:\n${mensagem}\n\n` +
+                    `Aguardo retorno.`;
 
-Aguardo retorno.
-`;
+      // Abre WhatsApp (recomendado)
+      const numeroWhats = "5573999854625"; // ←←← TROQUE pelo número real da Elevus
+      const whatsappUrl = `https://wa.me/${numeroWhats}?text=${encodeURIComponent(texto)}`;
 
-      window.location.href =
-        `mailto:contato@elevusedificacoes.com` +
-        `?subject=${encodeURIComponent("Solicitação de orçamento")}` +
-        `&body=${encodeURIComponent(texto)}`;
+      window.open(whatsappUrl, "_blank");
+
+      // Mostra mensagem de sucesso
+      setTimeout(() => {
+        success.style.display = "block";
+        btn.textContent = "Enviado com Sucesso!";
+
+        setTimeout(() => {
+          document.getElementById("formOrcamento").reset();
+          success.style.display = "none";
+          btn.disabled = false;
+          btn.textContent = "Enviar Pedido";
+        }, 4500);
+      }, 600);
     }
 
-    // SCROLL REVEAL
-    const observer = new IntersectionObserver(entries => {
+    // Scroll Reveal suave
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("show");
         }
       });
-    });
+    }, { threshold: 0.15 });
 
-    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    document.querySelectorAll(".reveal").forEach(el => {
+      el.classList.add("reveal"); // garante que tenha a classe
+      observer.observe(el);
+    });
   </script>
 
 </body>
